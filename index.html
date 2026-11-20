@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8faf9">
+  <meta name="description" content="Alatnica – online alati i ekstenzije na jednom mjestu.">
+  <title>Alatnica — svi alati na jednom mjestu</title>
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./tools.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <header class="site-header">
+      <a href="#" class="brand" aria-label="Alatnica, početna stranica"><span class="brand-emblem" aria-hidden="true">a<span>.</span></span><span>alatnica<span class="brand-period">.</span></span></a>
+      <div class="header-actions">
+        <button id="shareButton" type="button" class="plain-button" title="Kopiraj link Alatnice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M16 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></svg><span>Podijeli</span></button>
+        <button id="helpButton" type="button" class="outline-button">Kako koristiti <span aria-hidden="true">↗</span></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro" aria-label="Uvod">
+        <span class="eyebrow">TVOJ RADNI PROSTOR</span>
+        <h1>Sve na jednom mjestu<span class="title-dot">.</span></h1>
+        <p>Otvori online alat ili preuzmi ekstenziju. Bez traženja linkova i fajlova.</p>
+      </section>
+
+      <div class="search-field">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 4 4"/></svg>
+        <label for="search" class="sr-only">Pretraži alate</label>
+        <input id="search" type="search" placeholder="Pronađi alat..." autocomplete="off">
+        <span class="search-shortcut" aria-hidden="true">/</span>
+      </div>
+
+      <section class="tools-section" id="onlineSection" aria-labelledby="onlineTitle">
+        <div class="section-heading"><div><h2 id="onlineTitle">Online alati</h2><p>Pokreni jednim klikom</p></div><span class="section-count" id="onlineCount">3</span></div>
+        <div class="tools-grid" id="onlineGrid"></div>
+      </section>
+
+      <section class="tools-section extensions-section" id="extensionsSection" aria-labelledby="extensionTitle">
+        <div class="section-heading"><div><h2 id="extensionTitle">Ekstenzije</h2><p>Preuzmi i instaliraj jednom u preglednik</p></div><span class="section-count" id="extensionCount">2</span></div>
+        <div class="tools-grid" id="extensionGrid"></div>
+      </section>
+
+      <section class="help-strip" id="helpStrip"><div class="help-glyph" aria-hidden="true">?</div><div><strong>Prvi put koristiš ekstenziju?</strong><p>Pripremili smo jednostavne upute za Chrome, Brave i Edge.</p></div><button type="button" id="installationButton">Pogledaj upute <span aria-hidden="true">→</span></button></section>
+      <p class="no-results" id="emptyState" hidden>Nema alata s tim nazivom. Pokušaj drugu pretragu.</p>
+    </main>
+    <footer class="footer"><span>alatnica<span class="brand-period">.</span></span><button id="sidePanelButton" type="button">Želiš Alatnicu u bočnom panelu? <span aria-hidden="true">→</span></button></footer>
+  </div>
+
+  <dialog id="infoDialog" aria-labelledby="dialogTitle">
+    <div class="dialog-shell">
+      <div class="dialog-header"><div><span class="eyebrow" id="dialogEyebrow">UPUTE</span><h2 id="dialogTitle">Kako koristiti alat?</h2></div><button type="button" id="closeDialog" class="close-button" aria-label="Zatvori upute">×</button></div>
+      <div id="dialogContent" class="dialog-body"></div>
+    </div>
+  </dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>
