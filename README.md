@@ -1,42 +1,39 @@
-# Alatnica — jednostavni dashboard za GitHub Pages
+# Raskrinkavanje alatnica
 
-Neutralna web-stranica s pet alata (tri online aplikacije i dvije ekstenzije), pretragom i kratkim uputama. Nije potrebno instalirati ništa da bi se otvorio web-katalog.
+Dashboard za GitHub Pages: tri online alata, dvije ekstenzije za preuzimanje i opcioni dodatak za bočni panel.
 
-## Najlakši način objave
+## Postavljanje na postojeći GitHub
 
-1. Otvori https://github.com/new i napravi **Public** repozitorij, npr. `alatnica`.
-2. Klikni **Add file → Upload files** i učitaj **sadržaj** ovog raspakovanog foldera (ne ZIP u cijelosti). `index.html`, `style.css`, `app.js` i `tools.js` moraju biti u korijenu repozitorija.
-3. Potvrdi promjene dugmetom **Commit changes**.
-4. Idi na **Settings → Pages → Build and deployment** i pod **Source** odaberi **Deploy from a branch**. Odaberi `main` i `/(root)`, zatim **Save**.
-5. Objavljena adresa izgleda kao `https://IME-NALOGA.github.io/alatnica/`. Podijeli tu adresu kolegama.
+Repozitorij: https://github.com/Bother202/alati_objedinjeni
 
-Ako već imaš objavljenu staru verziju Alatnice, **zamijeni postojeće fajlove u istom repozitoriju novim sadržajem**. Ne moraš praviti novi repozitorij i link ostaje isti. Nakon objave probaj osvježavanje stranice sa `Ctrl + Shift + R`.
+1. Raspakuj ZIP `Raskrinkavanje_Alatnica_GitHub_v3.zip`.
+2. Na GitHubu otvori svoj repozitorij i klikni **Add file → Upload files**.
+3. Označi **sve datoteke iz raspakovanog foldera** (uključujući tri ZIP datoteke) i prevuci ih u prozor za upload. Ne uploaduj arhivu `Raskrinkavanje_Alatnica_GitHub_v3.zip` kao jednu datoteku.
+4. Klikni **Commit changes**. Svi fajlovi moraju stajati u glavnom dijelu repozitorija pored `index.html`.
+5. Otvori https://bother202.github.io/alati_objedinjeni/ i osvježi s **Ctrl + Shift + R**.
 
-## Šta sadrži
+Postavke **Settings → Pages → main → /(root)** već si uključio/la, ne treba ih mijenjati. GitHub Pages objavljuje fajlove iz repozitorija.
 
-- `index.html`, `style.css`, `app.js` — pojednostavljeni izgled i funkcije dashboarda.
-- `tools.js` — katalog; tu dodaješ nove alate i uređuješ linkove.
-- `downloads/FB_Screenshot_v6_1_FIX.zip` — originalna lokalna ekstenzija.
-- `downloads/Datumi_Objava_Brave.zip` — originalna lokalna ekstenzija.
-- `downloads/Alatnica_Bocni_Panel.zip` — opcioni dodatak za bočni panel.
-- `panel-dodatak/` — izvorni fajlovi opcionalnog dodatka za bočni panel.
+## Preuzimanja
 
-**Napomena:** Web-dashboard ne instalira lokalne ekstenzije automatski i ne može direktno pokretati njihove funkcije. Kolege će ZIP raspakovati, otići na `brave://extensions`, `chrome://extensions` ili `edge://extensions`, uključiti **Developer mode** i kliknuti **Load unpacked**. Trebaju odabrati folder koji sadrži `manifest.json`. Potom mogu koristiti te ekstenzije u svom pregledniku.
+- `FB_Screenshot_v6_1_FIX.zip` — Facebook screenshot ekstenzija.
+- `Datumi_Objava_Brave.zip` — ekstenzija za datume objava.
+- `Raskrinkavanje_Bocni_Panel.zip` — opcioni dodatak za prikaz kataloga u bočnom panelu Brave/Chrome/Edge.
 
-## Bočni panel (opciono)
+**Svi su u korijenu repozitorija**, tako da ih možeš uploadovati zajedno s ostalim fajlovima i preuzeti preko linkova u dashboardu. Sve ZIP datoteke sadrže folder s `manifest.json`.
 
-Dashboard može raditi samo kao web-stranica. Za bočni panel:
+Ako želiš mijenjati nazive i adrese online alata, otvori `tools.js` na GitHubu.
 
-1. Preuzmi `downloads/Alatnica_Bocni_Panel.zip` i raspakuj ga.
-2. U pregledniku instaliraj raspakovani folder preko **Load unpacked**.
-3. Klikni ikonu dodatka, unesi javnu GitHub Pages adresu, klikni **Sačuvaj**.
+### Kako instalirati ekstenziju
 
-Ako preglednik blokira prikaz neke stranice u panelu, otvori je u tabu tipkom ↗. Ovaj dodatak samo prikazuje katalog, ne zamjenjuje dvije stvarne ekstenzije.
+1. Preuzmi njen ZIP i raspakuj.
+2. Otvori `brave://extensions` ili `chrome://extensions` ili `edge://extensions`.
+3. Uključi **Developer mode**.
+4. Klikni **Load unpacked**.
+5. Odaberi folder iz raspakovanog ZIP-a koji sadrži `manifest.json`.
 
-## Dodavanje novih alata
+Ekstenzije se instaliraju lokalno; web-stranica ih ne može sama instalirati. Ovo je javni repozitorij: svi fajlovi, uključujući ZIP-ove, bit će javno dostupni.
 
-U `tools.js` dodaj novi objekat u niz `window.ALATNICA_TOOLS`. Za web alat postavi `type: "online"` i HTTPS `url`. Za ekstenziju postavi `type: "extension"` i putanju do ZIP-a unutar `downloads/`. Dodaj novi ZIP u folder `downloads/` i po potrebi upute u polje `tips`.
+### Logo
 
-## Održavanje i privatnost
-
-Stranica je statična i ne zahtijeva server, bazu podataka niti račun kolege. Postavljena je na GitHub Pages. Online alati mogu imati vlastite uslove pristupa. U **Public** repozitoriju preuzimanja i izvorni fajlovi su javno dostupni; ne postavljaj tajne ni privatne podatke. Ažuriranje lokalnih ekstenzija instaliranih preko `Load unpacked` obično zahtijeva preuzimanje nove verzije i ponovno učitavanje.
+Zaglavlje i bočni panel koriste logo klovna direktno sa zvanične stranice Raskrinkavanje.ba (`https://raskrinkavanje.ba/images/og.png`). Za učitavanje loga potrebna je mrežna veza sa Raskrinkavanje.ba. Ako se logo ne učita, vidi se ljubičasta podloga.
