@@ -3,48 +3,142 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fcfafc">
-  <meta name="description" content="Raskrinkavanje alatnica: online alati i ekstenzije.">
+  <meta name="theme-color" content="#2e1039">
+  <meta name="description" content="Raskrinkavanje alatnica — online alati i ekstenzije.">
   <title>Raskrinkavanje alatnica</title>
-  <link rel="stylesheet" href="./style.css">
-  <script src="./tools.js" defer></script>
-  <script src="./app.js" defer></script>
+  <!-- Dizajn je ugrađen u index.html. Dva ZIP fajla moraju se nalaziti uz index.html na GitHub Pages. -->
+  <style>
+    :root { color-scheme:light; --purple:#30113e;--purple2:#452054;--pink:#e94170;--ink:#2a2230;--muted:#756b7a;--border:#e9e3eb;--bg:#faf8fb;--white:#fff; }
+    *{box-sizing:border-box}
+    html{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--bg)}
+    body{margin:0}a{color:inherit;text-decoration:none}button{font:inherit}a:focus-visible,summary:focus-visible{outline:3px solid #f58aaf;outline-offset:3px}
+    .wrap{width:min(1050px,calc(100% - 52px));margin-inline:auto}
+    .head{background:linear-gradient(112deg,#2c0c36,#411851);color:#fff}
+    .head-inner{display:flex;align-items:center;justify-content:space-between;gap:25px;padding-block:29px}
+    .identity{display:flex;align-items:center;gap:16px;min-width:0}
+    .logo{width:68px;height:68px;position:relative;overflow:hidden;isolation:isolate;border-radius:50%;flex:none;background:#180b1e;display:grid;place-items:center;border:2px solid #704471;box-shadow:0 3px 14px #1004153b}
+    .logo svg{width:58px;height:58px;display:block}
+    .logo img{position:absolute;left:50%;top:50%;width:440px;max-width:none;height:auto;transform:translate(-50%,-50%);font-size:0}
+    .identity small{display:block;font-size:11px;text-transform:uppercase;letter-spacing:2.3px;font-weight:750;color:#e7d0e9;margin:0 0 4px}
+    .identity strong{display:block;font-weight:790;font-size:29px;line-height:1.05;letter-spacing:-1.2px}
+    .dot{color:#f45c83}
+    .head-action{border:1px solid #86618d;background:#ffffff10;padding:11px 14px;border-radius:10px;color:#fff;font-size:13px;font-weight:650;white-space:nowrap}
+    .head-action:hover{background:#ffffff20}
+    main.wrap{padding:35px 0 52px}
+    section+section{margin-top:36px}
+    .section-title{display:flex;align-items:center;gap:18px;margin:0 0 16px}
+    .section-title h2{font-size:16px;font-weight:760;letter-spacing:-.3px;white-space:nowrap;margin:0}
+    .section-title:after{content:"";display:block;height:1px;background:var(--border);flex:1}
+    .grid{display:grid;gap:16px}.online-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.extensions-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .card{border:1px solid var(--border);background:var(--white);border-radius:17px;padding:23px 23px 20px;min-width:0;box-shadow:0 7px 27px #2e103907;display:flex;flex-direction:column;align-items:flex-start;min-height:205px}
+    .card:hover{border-color:#d8cadf;box-shadow:0 10px 30px #2e10390c}
+    .icon{width:43px;height:43px;background:#f4edf6;border-radius:12px;display:grid;place-items:center;color:var(--purple);margin-bottom:17px}
+    .icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.8}
+    h3{font-size:17px;line-height:1.28;letter-spacing:-.4px;margin:0 0 7px;font-weight:760}
+    .desc{font-size:13px;color:var(--muted);line-height:1.45;margin:0 0 20px}
+    .buttons{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:auto}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;border-radius:9px;padding:9px 15px;background:var(--purple);color:#fff;font-size:13px;font-weight:690;white-space:nowrap}
+    .button:hover{background:#562b61}
+    .button.secondary{background:#f4edf6;color:var(--purple)}
+    .help-link{color:#664e6c;font-size:13px;font-weight:680;text-decoration:underline;text-decoration-color:#c9b9cc;text-underline-offset:3px}
+    .guide-wrap{margin-top:31px;border-top:1px solid var(--border);padding-top:18px}
+    details{border:1px solid var(--border);border-radius:12px;background:#fff;overflow:hidden}
+    details[open]{border-color:#d8c3df}
+    summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;list-style:none;padding:15px 18px;font-size:13px;font-weight:760;color:#4b2b58}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";font-size:22px;font-weight:400;line-height:1}
+    details[open]>summary:after{content:"−"}
+    .guide{padding:0 19px 18px;color:#5c5161;font-size:13px;line-height:1.6}
+    .guide p{margin:0 0 10px}.guide ol{margin:7px 0 0;padding-left:21px}.guide li+li{margin-top:6px}
+    code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#f5f0f6;color:#381a46;padding:2px 4px;border-radius:4px;overflow-wrap:anywhere}
+    .note{font-size:12px;color:var(--muted);margin-top:11px}
+    .two-guides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:14px}
+    .fineprint{margin-top:20px;font-size:12px;color:#8b7e90}
+    @media(max-width:760px){.wrap{width:calc(100% - 36px)}.online-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.extensions-grid{grid-template-columns:1fr}}
+    @media(max-width:520px){.wrap{width:calc(100% - 28px)}.head-inner{padding-block:20px}.logo{width:53px;height:53px}.logo svg{width:49px;height:49px}.logo img{width:345px}.identity{gap:10px}.identity small{font-size:8px;letter-spacing:1.5px}.identity strong{font-size:23px}.head-action{font-size:11px;padding:9px 8px}main.wrap{padding-top:26px}.online-grid,.extensions-grid,.two-guides{grid-template-columns:1fr}.card{min-height:0;padding:19px}.icon{margin-bottom:12px}.desc{margin-bottom:16px}.grid{gap:11px}section+section{margin-top:28px}h3{font-size:16px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
 </head>
 <body>
-  <header class="header">
-    <div class="shell head-inner">
-      <div class="brand" aria-label="Raskrinkavanje alatnica">
-        <span class="clown-logo" role="img" aria-label="Logo Raskrinkavanja: klovn i maska"></span>
-        <div class="brand-words"><span class="brand-kicker">RASKRINKAVANJE<span class="accent-dot">.</span>BA</span><strong>Alatnica<span class="accent-dot">.</span></strong></div>
+<header class="head">
+  <div class="wrap head-inner">
+    <div class="identity">
+      <div class="logo" aria-label="Raskrinkavanje — simbol klovna i maske" role="img">
+        <!-- Vektorski rezervni simbol; zvanični grafički motiv se učitava iz slike na Raskrinkavanje.ba. -->
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#23102c"/><ellipse cx="27" cy="26" rx="13" ry="18" fill="#eee" transform="rotate(-12 27 26)"/><path d="M18 17l-5 5 5 3M35 17l5 5-5 3" fill="#e94572"/><path d="M23 23l3 3m0-3-3 3" stroke="#26132a" stroke-width="2.5"/><circle cx="29" cy="31" r="3.5" fill="#ea3e70"/><path d="M20 37q11 9 18-2" fill="none" stroke="#211326" stroke-width="2.7" stroke-linecap="round"/><path d="M29 29l12-8 11 10-4 18-17-4z" fill="#faf6f8" stroke="#211326" stroke-width="2"/><circle cx="38" cy="31" r="1.4" fill="#211326"/><circle cx="47" cy="35" r="1.4" fill="#211326"/><path d="M37 39q4 5 8 2" stroke="#211326" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        <img src="https://raskrinkavanje.ba/images/og.png" alt="" loading="eager" decoding="async" onerror="this.hidden=true">
       </div>
-      <button type="button" id="installTop" class="head-link">Upute za instalaciju <span aria-hidden="true">↗</span></button>
+      <div><small>Raskrinkavanje.ba</small><strong>Alatnica<span class="dot">.</span></strong></div>
     </div>
-  </header>
-
-  <main class="shell">
-    <div class="page-title"><h1>Alati na jednom mjestu<span class="accent-dot">.</span></h1></div>
-
-    <section class="tool-section" aria-labelledby="onlineTitle">
-      <div class="section-title"><h2 id="onlineTitle">Online alati</h2><span class="section-line"></span></div>
-      <div class="tool-grid online-grid" id="onlineGrid"></div>
-    </section>
-
-    <section class="tool-section extensions" aria-labelledby="extensionTitle">
-      <div class="section-title"><h2 id="extensionTitle">Ekstenzije</h2><span class="section-line"></span></div>
-      <div class="tool-grid extension-grid" id="extensionGrid"></div>
-    </section>
-
-    <footer class="footer">
-      <button id="installFooter" type="button">Kako instalirati ekstenzije <span aria-hidden="true">↗</span></button>
-      <button id="panelFooter" type="button">Alatnica u bočnom panelu <span aria-hidden="true">↗</span></button>
-    </footer>
-  </main>
-
-  <dialog id="guideDialog" aria-labelledby="dialogTitle">
-    <div class="dialog-inner">
-      <div class="dialog-heading"><div><div class="dialog-eyebrow" id="dialogLabel">UPUTE</div><h2 id="dialogTitle">Upute</h2></div><button id="closeDialog" type="button" class="close" aria-label="Zatvori">×</button></div>
-      <div id="dialogContent"></div>
+    <a href="#upute" class="head-action">Upute ↗</a>
+  </div>
+</header>
+<main class="wrap">
+  <section aria-labelledby="online-heading">
+    <div class="section-title"><h2 id="online-heading">Online alati</h2></div>
+    <div class="grid online-grid">
+      <article class="card">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="5" rx="1.3"/><path d="M5.5 9v11h13V9M9 13h6"/></svg></span>
+        <h3>Hepek za arhiviranje</h3><p class="desc">Arhiviranje web sadržaja.</p>
+        <div class="buttons"><a class="button" href="https://znhepek.streamlit.app/" target="_blank" rel="noopener noreferrer">Otvori alat ↗</a></div>
+      </article>
+      <article class="card">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 18V8m5 10V5m5 13v-7m5 7V3M2 21h20"/></svg></span>
+        <h3>Hepek monitoring</h3><p class="desc">Monitoring online sadržaja.</p>
+        <div class="buttons"><a class="button" href="https://hepek20.streamlit.app/" target="_blank" rel="noopener noreferrer">Otvori alat ↗</a></div>
+      </article>
+      <article class="card">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18M8 15h3m3 0h2"/></svg></span>
+        <h3>Hepek za analizu datuma objave na portalima</h3><p class="desc">Analiza datuma objavljivanja.</p>
+        <div class="buttons"><a class="button" href="https://date-analysis.streamlit.app/" target="_blank" rel="noopener noreferrer">Otvori alat ↗</a></div>
+      </article>
     </div>
-  </dialog>
+  </section>
+  <section aria-labelledby="extension-heading">
+    <div class="section-title"><h2 id="extension-heading">Ekstenzije</h2></div>
+    <div class="grid extensions-grid">
+      <article class="card">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 7h3l2-3h5l2 3h3A2.5 2.5 0 0 1 22 9.5v9A2.5 2.5 0 0 1 19.5 21h-15A2.5 2.5 0 0 1 2 18.5v-9A2.5 2.5 0 0 1 4.5 7Z"/><circle cx="12" cy="13.5" r="3.6"/></svg></span>
+        <h3>FB Screenshot</h3><p class="desc">Fotografisanje Facebook objava.</p>
+        <div class="buttons"><a class="button" href="./FB_Screenshot_v6_1_FIX.zip" download>Preuzmi ZIP ↓</a><a class="help-link" href="#fb-upute" onclick="document.getElementById('fb-upute').open=true">Upute</a></div>
+      </article>
+      <article class="card">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="9"/><path d="M12 8v5l3 2M8 2h8"/></svg></span>
+        <h3>Datumi objava</h3><p class="desc">Provjera datuma objava u otvorenim tabovima.</p>
+        <div class="buttons"><a class="button" href="./Datumi_Objava_Brave.zip" download>Preuzmi ZIP ↓</a><a class="help-link" href="#datumi-upute" onclick="document.getElementById('datumi-upute').open=true">Upute</a></div>
+      </article>
+    </div>
+  </section>
+  <section id="upute" class="guide-wrap" aria-label="Upute za instalaciju i korištenje">
+    <div class="section-title"><h2>Upute za ekstenzije</h2></div>
+    <details><summary>Kako instalirati ekstenziju?</summary>
+      <div class="guide">
+        <p>Preuzmi ZIP željene ekstenzije i raspakuj ga na računar.</p>
+        <ol>
+          <li>U Braveu otvori <code>brave://extensions</code>, u Chromeu <code>chrome://extensions</code>, a u Edgeu <code>edge://extensions</code>.</li>
+          <li>Uključi <strong>Developer mode</strong> (Način rada za programere).</li>
+          <li>Klikni <strong>Load unpacked</strong> (Učitaj raspakovano).</li>
+          <li>Odaberi raspakovani folder u kojem se nalazi <code>manifest.json</code>.</li>
+          <li>Pričvrsti ikonu ekstenzije uz adresnu traku i koristi je.</li>
+        </ol>
+        <p class="note">Nemoj brisati ili premještati raspakovani folder nakon instalacije.</p>
+      </div>
+    </details>
+    <div class="two-guides">
+      <details id="fb-upute"><summary>FB Screenshot — korištenje</summary>
+        <div class="guide"><ol><li>Otvori Facebook objavu.</li><li>Pokreni FB Screenshot u pregledniku.</li><li>Izaberi format i preuzmi fotografiju kao PNG ili JPG.</li></ol></div>
+      </details>
+      <details id="datumi-upute"><summary>Datumi objava — korištenje</summary>
+        <div class="guide"><ol><li>Otvori stranice u tabovima.</li><li>Pokreni ekstenziju i analiziraj tabove.</li><li>Pregledaj rezultate ili preuzmi CSV.</li></ol></div>
+      </details>
+    </div>
+    <div class="two-guides">
+      <details><summary>Ažuriranje ekstenzija</summary>
+        <div class="guide"><ol><li>Preuzmi novu verziju ZIP-a.</li><li>Raspakuj je u postojeći folder i zamijeni fajlove.</li><li>U postavkama ekstenzija klikni <strong>Reload</strong>.</li></ol></div>
+      </details>
+    </div>
+    <p class="fineprint">Raskrinkavanje alatnica · Online alati i ekstenzije</p>
+  </section>
+</main>
 </body>
 </html>
